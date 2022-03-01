@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./fabric.js"></script>
+
+    <style>
+        body,canvas,.canvas-container,.lower-canvas,.upper-canvas{
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+        body{
+            position: relative;
+        }
+        .menu{
+            z-index: 1;
+            position: absolute;
+            background-color: #FFFFFF;
+            padding: 0;
+            border-radius: 25px;
+            border: 2px solid #73AD21;
+            padding: 20px;
+        }
+
+        </style>
+</head>
+
+<body>
+    <div id="shotMenu" class="menu" style="top:10px;left:10px;width:200">
+        <select onchange="onChangeSelectShot()" id="selectShot"></select><br/>
+        <select onchange="onChangeSelectGroup()" id="selectGroup">
+            <option value="-2">Delete</option>
+            <option value="-1">Sighter</option>
+        </select>
+    </div>
+    <div id="groupMenu" class="menu" style="top:100px;left:10px;width:200">
+        <select onchange="onChangeShowGroup()" id="showGroup"></select>
+        <button onclick="addGroup()">New</button><br>
+        <div id="groupInfo"></div>
+    </div>
+    <div id="targetMenu" class="menu" style="top:10px;left:200px;width:200px">
+        <select onchange="onChangeSelectTarget()" id="selectTarget">
+            <option value="./img/1.svg">ISSF 50m Rifle</option>
+            <option value="./img/2.svg">Weird one</option>
+            <option value="./img/1.svg">ISSF 50m Rifle</option>
+            <option value="./img/1.svg">ISSF 50m Rifle</option>
+        </select>
+        <button id="calibrateButton" onclick="calibrateTarget()">Calibrate</button>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script src="./index.js"></script>
+</body>
+
+</html>
