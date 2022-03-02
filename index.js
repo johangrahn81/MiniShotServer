@@ -17,7 +17,7 @@ function setTargetImage(url){
         image.alt = '';
         image.selectable=false;
         canvas.insertAt(image,0,true);
-        //console.log("Target set to: "+url)
+        //console.log('Target set to: '+url)
         calibrationX=0;
         calibrationY=0;
       }, {
@@ -31,7 +31,7 @@ function setTargetImage(url){
 
 function calibrateTarget(){
     isCalibrating=!isCalibrating;
-    //console.log("calibrateTarget: "+isCalibrating)
+    //console.log('calibrateTarget: '+isCalibrating)
     if(isCalibrating){
         $('calibrateButton').innerHTML='Stop calibration';
     }else{
@@ -208,11 +208,11 @@ function addGroup(){
     var group={id:lastGroup,left:'0',right:'0',top:'0',bottom:'0',item:canvasItems,text:'Group#'+(lastGroup+1),hits:'0'}
     groups.push(group);
 
-    var option = document.createElement("option");
+    var option = document.createElement('option');
     option.text=group.text;
     option.value=group.id;
     $('selectGroup').add(option)
-    var option = document.createElement("option");
+    var option = document.createElement('option');
     option.text=group.text;
     option.value=group.id;
     $('showGroup').add(option)
@@ -261,7 +261,7 @@ function addHit(hit){
         clearTimeout(timer);
     }
     timer=setTimeout(animateHit,1000);
-    var option = document.createElement("option");
+    var option = document.createElement('option');
     option.text='Shot#'+(hit.id+1)+' '+hit.v+'m/s';
     option.value=hit.id;
     $('selectShot').add(option);
@@ -330,7 +330,7 @@ function addHit(hit){
         'mouse:move': function(opt) {
             var e=opt.e;
             if(isCalibrating && this.isDragging){
-                if(opt.e.type=="touchmove"){
+                if(opt.e.type=='touchmove'){
                     e=opt.e.touches[0];
                     if(opt.e.touches.length==1){
                         e=opt.e.touches[0];
@@ -344,7 +344,7 @@ function addHit(hit){
                 this.lastPosY = e.clientY;
                 canvas.requestRenderAll();
             }else{
-                if(opt.e.type=="touchmove"){
+                if(opt.e.type=='touchmove'){
                     e=opt.e.touches[0];
                     if(opt.e.touches.length==1){
                         e=opt.e.touches[0];
@@ -419,13 +419,13 @@ function addHit(hit){
     zoom=Math.min(zoomx,zoomy);
     canvas.zoomToPoint({x: 0, y: 0},zoom)
 
-    console.log("Exiting: ()");
+    console.log('Exiting: ()');
 })();
 
 addGroup();
 updateGroup(0);
 selectGroup(0);
-
+setTargetImage('/img/1.svg');
 setInterval(async function(){
     const response = await fetch('./data.json');
     const json = await response.json();
